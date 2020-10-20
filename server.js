@@ -37,10 +37,17 @@ function runSearch() {
         }).then(answers => {
             switch (answers.action) {
                 case "View all employees":
-                    Employees();
+                    employees();
                     runSearch();
                     break;
-                case "View all employees by department"
+                case "View all employees by department":
+                    department();
+                    runSearch();
+                    break;
+                case "View all employees by manager":
+                    manager();
+                    runSearch();
+
             }
         })
 
