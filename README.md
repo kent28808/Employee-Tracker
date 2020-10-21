@@ -1,5 +1,5 @@
 # Employee-Tracker
-# note-taker
+
 ![license](https://img.shields.io/badge/license-MIT-blue.svg) 
 
 ## Description
