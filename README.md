@@ -4,22 +4,18 @@
 
 ## Description
 
-This is a simple note taker application which is used to write, save and delete notes.  This app has been deployed using Heroku. 
+This is a command line application that is an employee tracker.  It is capable of adding employees, departments and roles.
+It can also view and update existing employees, departments and roles.
 
-![Note Taker](HW/note-taker/Photo.png)
-
-![Note Taker](HW/note-taker/noteTaker.gif)
+![Employee Tracker](HW/note-taker/Photo.png)
 
 
 ## Built With
 
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [CSS](https://www.w3schools.com/css/)
-* [Bootstrap](https://getbootstrap.com/)
-* [JS](https://www.w3schools.com/js/)
-* [Node.js](https://www.w3schools.com/css/)
-* [Heroku](www.heroku.com)
-
+* [Node.js](https://nodejs.org/en/)
+* [inquirer](https://www.npmjs.com/package/inquirer)
+* [mySQL](https://www.npmjs.com/package/mysql#performing-queries)
+* [mySQL Workbench]
 
 ## Deployed Link
 
@@ -44,7 +40,7 @@ npm install
 
 ## Usage 
 
-User opens heroku link and is taken to a homepage of the Note Taker Applicaion.  User clicks "get started" which will take the user to the note page.  User can add multiple notes with different titles of their choosing.  Each note will save until the user clicks on the delete "trash bin" icon.
+User runs npm start in terminal and is prompted with the options noted above.  Once options and inputs have been completed, data is added or removed from the mySQL database.
 
 ## Contributions
 
@@ -60,7 +56,7 @@ MIT
 ## Tests
 
 ```
-node app.js
+node server.js
 ```
 
 ## Questions

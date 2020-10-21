@@ -114,11 +114,48 @@ function viewRoles() {
 }
 
 function addEmployee() {
-    connection.query("SELECT * FROM role;", function (err, res) {
-        if (err) throw err;
-        console.log(res.length + "roles found!");
-        console.table("All Roles:", res);
-        runSearch();
-    })
+        inquirer
+            .prompt([
+                {
+                    name: "firstname",
+                    type: "input",
+                    message: "Enter employee first name?"
+                },
+                {
+                    name: "lastname",
+                    type: "input",
+                    message: "Enter employee last name?"
+                },
+                {
+                    name: "role",
+                    type: "list",
+                    choices: ["Salesperson", "Engineer", "Accountant", "Lawyer"]
+                },
+                {
+                    name: "manager",
+                    type: "list",
+                    choices: ["John Doe", "Barney Rubble", "Mike Chan"]
+                }
+
+            ])
+            .then(function(res){
+                connection.query("INSERT INTO employee SET ?",
+                {
+                    first_name: res.firstname,
+                    last_name: res.lastname,
+                    role_id: res.role,
+                    manager_id: res.manager
+                }, 
+                function(err, res){
+                    if (err) {
+                        throw err;
+                    }
+                    //console.table(res);
+                }
+                );    
+                runSearch();
+            });
+        
+    }
 
 
