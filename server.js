@@ -53,15 +53,15 @@ function runSearch() {
                 case "Add Employee":
                     addEmployee();
                     break;
-                // case "Add Department":
-                //     viewDepartment();
-                //     break;
-                // case "Add Role":
-                //     addRole();
-                //     break;
-                // case "Update Employee Role":
-                //     updateEmployee();
-                //     break;
+                case "Add Department":
+                    addDepartment();
+                    break;
+                case "Add Role":
+                    addRole();
+                    break;
+                case "Update Employee Role":
+                    updateEmployee();
+                    break;
                 // case "Update Employee Manager":
                 //     updateManager();
                 //     break;
@@ -128,13 +128,13 @@ function addEmployee() {
                 },
                 {
                     name: "role",
-                    type: "list",
-                    choices: ["Salesperson", "Engineer", "Accountant", "Lawyer"]
+                    type: "input",
+                    message: "Enter your role id."
                 },
                 {
                     name: "manager",
-                    type: "list",
-                    choices: ["John Doe", "Barney Rubble", "Mike Chan"]
+                    type: "input",
+                    message: "Enter your manager id."
                 }
 
             ])
@@ -143,8 +143,8 @@ function addEmployee() {
                 {
                     first_name: res.firstname,
                     last_name: res.lastname,
-                    role_id: res.role_id,
-                    manager_id:res.manager_id
+                    role_id: res.role,
+                    manager_id: res.manager
                 }, 
                 function(err, res){
                     if (err) {
@@ -158,4 +158,69 @@ function addEmployee() {
         
     }
 
+    function addDepartment() {
+        inquirer
+            .prompt([
+                {
+                    name: "dept",
+                    type: "input",
+                    message: "What is the name of the Department?"
+                }
 
+            ])
+            .then(function(res){
+                connection.query("INSERT INTO department SET ?",
+                {
+                    name: res.dept
+                }, 
+                function(err, res){
+                    if (err) {
+                        throw err;
+                    }
+                    console.table(res);
+                }
+                );    
+                runSearch();
+            });
+        
+    }
+
+    function addRole() {
+        inquirer
+            .prompt([
+                {
+                    name: "role",
+                    type: "input",
+                    message: "What is the name of the role?"
+                },
+                {
+                    name: "salary",
+                    type: "input",
+                    message: "What is the salary of the role?"
+                },
+                {
+                    name: "roledepartment",
+                    type: "input",
+                    message: "What is the department id?"
+                },
+            ])
+            .then(function(res){
+                connection.query("INSERT INTO role SET ?",
+                {
+                    title: res.role,
+                    salary: res.salary,
+                    department_id: res.roledepartment
+                }, 
+                function(err, res){
+                    if (err) {
+                        throw err;
+                    }
+                    //console.table(res);
+                }
+                );    
+                runSearch();
+            });
+        
+    }
+
+//function updateEmployee()
