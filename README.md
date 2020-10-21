@@ -7,7 +7,7 @@
 This is a command line application that is an employee tracker.  It is capable of adding employees, departments and roles.
 It can also view and update existing employees, departments and roles.
 
-![Employee Tracker](HW/note-taker/Photo.png)
+![Employee Tracker](https://github.com/kent28808/Employee-Tracker/blob/main/Assets/Photo1.png)
 
 
 ## Built With
