@@ -223,4 +223,48 @@ function addEmployee() {
         
     }
 
-//function updateEmployee()
+function updateEmployee(){
+        var allemployees = [];
+        connection.query("SELECT * FROM employee", function(err, res) {
+          // console.log(res);
+          for (let i = 0; i < res.length; i++) {
+            let employeeString =
+              res[i].id + " " + res[i].first_name + " " + res[i].last_name;
+            allemployees.push(employeeString);
+          }
+          // console.log(allemployees)
+      
+          inquirer
+            .prompt([
+              {
+                type: "list",
+                name: "updateEmployeeRole",
+                message: "select employee to update role",
+                choices: allemployees
+              },
+              {
+                type: "list",
+                message: "select new role",
+                choices: ["manager", "employee"],
+                name: "newrole"
+              }
+            ])
+            .then(function(res) {
+              console.log("about to update", res);
+              const idToUpdate = {};
+              idToUpdate.employeeId = parseInt(res.updateEmpRole.split(" ")[0]);
+              if (answer.newrole === "manager") {
+                idToUpdate.role_id = 1;
+              } else if (answer.newrole === "employee") {
+                idToUpdate.role_id = 2;
+              }
+              connection.query(
+                "UPDATE employee SET role_id = ? WHERE id = ?",
+                [idToUpdate.role_id, idToUpdate.employeeId],
+                function(err, data) {
+                  runSearch();
+                }
+              );
+            });
+        });
+      }
