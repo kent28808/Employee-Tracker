@@ -32,12 +32,12 @@ function runSearch() {
                 "Add Department",
                 "Add Role",
                 "Update Employee Role",
-                "Update Employee Manager",
-                "View Employees by Manager",
-                "Remove Department",
-                "Remove Role",
-                "Remove Employee",
-                "Quit",
+                // "Update Employee Manager",
+                // "View Employees by Manager",
+                // "Remove Department",
+                // "Remove Role",
+                // "Remove Employee",
+                // "Quit",
             ]
         }).then(answers => {
             switch (answers.action) {
@@ -143,8 +143,8 @@ function addEmployee() {
                 {
                     first_name: res.firstname,
                     last_name: res.lastname,
-                    role_id: res.role,
-                    manager_id: res.manager
+                    role_id: res.role_id,
+                    manager_id:res.manager_id
                 }, 
                 function(err, res){
                     if (err) {
