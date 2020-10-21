@@ -17,10 +17,6 @@ It can also view and update existing employees, departments and roles.
 * [mySQL](https://www.npmjs.com/package/mysql#performing-queries)
 * [mySQL Workbench]
 
-## Deployed Link
-
-* [Deployed link](https://dry-spire-61221.herokuapp.com/notes)
-
 
 ## Table of Contents
 
