@@ -44,15 +44,15 @@ function runSearch() {
                 case "View all Employees":
                     return viewEmployees();
                     break;
-                // case "View all departments":
-                //     viewDepartment();
-                //     break;
-                // case "View all roles":
-                //     viewRoles();
-                //     break;
-                // case "Add Employee":
-                //     addEmployee();
-                //     break;
+                case "View all Departments":
+                    viewDepartment();
+                    break;
+                case "View all Roles":
+                    viewRoles();
+                    break;
+                case "Add Employee":
+                    addEmployee();
+                    break;
                 // case "Add Department":
                 //     viewDepartment();
                 //     break;
@@ -85,16 +85,40 @@ function runSearch() {
 }
 
 function viewEmployees() {
-     connection.query("SELECT * FROM employee;", function (error, results, fields) {
-        console.log(results)
+    connection.query("SELECT * FROM employee;", function (err, res) {
+        if (err) throw err;
+        console.log(res.length + "employees found!");
+        console.table("All Employees:", res);
+        runSearch();
     })
-       runSearch();
 }
 
 function viewDepartment() {
+    connection.query("SELECT * FROM department;", function (err, res) {
+        if (err) throw err;
+        console.log(res.length + "departments found!");
+        console.table("All Departments:", res);
+        runSearch();
+    })
 
 }
 
 function viewRoles() {
+    connection.query("SELECT * FROM role;", function (err, res) {
+        if (err) throw err;
+        console.log(res.length + "roles found!");
+        console.table("All Roles:", res);
+        runSearch();
+    })
 
 }
+
+function addEmployee() {
+    connection.query("SELECT * FROM role;", function (err, res) {
+        if (err) throw err;
+        console.log(res.length + "roles found!");
+        console.table("All Roles:", res);
+        runSearch();
+    })
+
+
