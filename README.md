@@ -17,13 +17,6 @@ It can also view and update existing employees, departments and roles.
 * [mySQL](https://www.npmjs.com/package/mysql#performing-queries)
 * [mySQL Workbench]
 
-<<<<<<< HEAD
-## Demo
-
-* [Video link]()
-
-=======
->>>>>>> 100ec8c0ada509eea77b7d68cca464659a8708f2
 
 ## Table of Contents
 
