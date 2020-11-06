@@ -62,21 +62,6 @@ function runSearch() {
                 case "Update Employee Role":
                     updateEmployee();
                     break;
-                // case "Update Employee Manager":
-                //     updateManager();
-                //     break;
-                // case "View Employees by Manager":
-                //     viewManager();
-                //     break;
-                // case "Remove Department":
-                //     removeDepartment();
-                //     break;
-                // case "Remove Role":
-                //     removeRole();
-                //     break;
-                // case "Remove Employee":
-                //     removeEmployee();
-                //     break;
                 default: break;
 
             }
@@ -224,47 +209,32 @@ function addEmployee() {
     }
 
 function updateEmployee(){
-        var allemployees = [];
-        connection.query("SELECT * FROM employee", function(err, res) {
-          // console.log(res);
-          for (let i = 0; i < res.length; i++) {
-            let employeeString =
-              res[i].id + " " + res[i].first_name + " " + res[i].last_name;
-            allemployees.push(employeeString);
-          }
-          // console.log(allemployees)
-      
-          inquirer
-            .prompt([
-              {
-                type: "list",
-                name: "updateEmployeeRole",
-                message: "select employee to update role",
-                choices: allemployees
-              },
-              {
-                type: "list",
-                message: "select new role",
-                choices: ["manager", "employee"],
-                name: "newrole"
-              }
-            ])
-            .then(function(res) {
-              console.log("about to update", res);
-              const idToUpdate = {};
-              idToUpdate.employeeId = parseInt(res.updateEmpRole.split(" ")[0]);
-              if (answer.newrole === "manager") {
-                idToUpdate.role_id = 1;
-              } else if (answer.newrole === "employee") {
-                idToUpdate.role_id = 2;
-              }
-              connection.query(
-                "UPDATE employee SET role_id = ? WHERE id = ?",
-                [idToUpdate.role_id, idToUpdate.employeeId],
-                function(err, data) {
-                  runSearch();
-                }
-              );
-            });
+    console.log('updating emp');
+    inquirer
+    .prompt({
+      name: "employeeid",
+      type: "input",
+      message: "Enter employee id",
+    })
+    .then(function (res) {
+      var id = res.employeeid;
+
+      inquirer
+        .prompt({
+          name: "role",
+          type: "input",
+          message: "Enter role id",
+        })
+        .then(function (res) {
+          var roleId = res.role;
+
+          var query = "UPDATE employee SET role_id=? WHERE id=?";
+          connection.query(query, [roleId, id], function (err, res) {
+            if (err) {
+              console.log(err);
+            }
+            runSearch();
+          });
         });
-      }
+    });
+}
