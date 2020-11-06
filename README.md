@@ -9,7 +9,9 @@ It can also view and update existing employees, departments and roles.
 
 ![Employee Tracker](https://github.com/kent28808/Employee-Tracker/blob/main/Assets/Photo1.png)
 
-
+## Demo
+ https://drive.google.com/file/d/1MrSBQ-ZG8BZsagqaYyxGWGw1qwc4oHhK/view
+ 
 ![Employee Tracker](https://github.com/kent28808/Employee-Tracker/blob/main/Assets/EmployeeTracker.gif)
 
 ## Built With
